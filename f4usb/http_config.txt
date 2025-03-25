@@ -1,0 +1,13 @@
+配置事项：
+https://www.cnblogs.com/USTHzhanglu/category/2362164.html
+配置调试串口
+开启lwip debug 观察输出
+httpd enable
+LWIP_HTTPD_DYNAMIC_FILE_READ (Dynamic File Read) 使能（错误）
+在httpd.c 中修改 #define HTTP_IS_DYNAMIC_FILE(hs) 1
+HTTPD_USE_CUSTOM_FSDATA (Custom FS Data) 使能
+并将..\Middlewares\Third_Party\LwIP\src\apps\http下的fsdata.c替换为自己的fsdata_custom.c文件并从工程中移除fsdata.c
+使用makefsdata输出数组文件
+发送成功会调试串口显示一下内容
+tcp_pcb_purge
+tcp_slowtmr: no active pcbs

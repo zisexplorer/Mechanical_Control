@@ -1,0 +1,16 @@
+f4裸机配置lwip
+参考网址：https://www.iotword.com/28574.html
+注意点
+1、lwip文件中cc.h  将#define LWIP_PLATFORM_ASSERT(x) 后的
+	//do {printf("Assertion \"%s\" failed at line %d in %s\n", \
+	//                                     x, __LINE__, __FILE__); } whil
+	删掉
+2、lan8742.c 117行在if(pObj->DevAddr > LAN8742_MAX_DEV_ADDR)之前添加pObj->DevAddr = 0x00; //PHY Address 改为0x00或者0x0
+3、注意软件复位引脚配置默认为低电平
+4、while中运行 MX_LWIP_Process();
+2025.3.12
+
+虚拟串口
+1:使用usbfs 默认配置
+2配置usb中间件
+3添加usb_printf重定向
